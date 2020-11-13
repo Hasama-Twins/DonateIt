@@ -94,11 +94,14 @@ Donate goods to people in your neighborhood or pick up other people's excess goo
 <img src="https://github.com/Hasama-Twins/DonateIt/blob/main/digitalwireframe.png" width=800>
 
 ### [BONUS] Interactive Prototype
-<img src='https://recordit.co/oMWGvigB0a.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://g.recordit.co/nYdhCpX0qa.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
 ## Schema 
 [This section will be completed in Unit 9]
+
 ### Models
 [Add table of models]
+
 ### Networking
 - [Add list of network requests by screen ]
 - [Create basic snippets for each Parse network request]

@@ -11,13 +11,13 @@ Original App Design Project - README Template
 
 ## Overview
 ### Description
-Donate goods to people in your neighborhood or pick up other people's unwanted goods in order to help minimize waste and be sustainable.
+Donate goods to people in your neighborhood or pick up other people's excess goods in order to help minimize waste and be sustainable.
 
 ### App Evaluation
 [Evaluation of your app across the following attributes]
 - **Category:** Shopping (free items though)
 - **Mobile:** uses camera, uses Apple maps, mobile first experience.
-- **Story:** Allows users to donate unwanted goods to people in your neighborhood or pick up other people's unwanted goods in order to help minimize waste and be sustainable.
+- **Story:** Allows users to donate unwanted goods to people in your neighborhood or pick up other people's excess goods in order to help minimize waste and be sustainable.
 - **Market:** Anyone that has something to donate or something in excess or anyone seeking free goods.
 - **Habit:** Users can find FREE items on the app daily and clean out their houses by donating their unused items. Could find someone's unwanted treasure.
 - **Scope:** DonateIt starts out with a narrow scope of sharing free items within a small community. Possible expansions for a larger scope include growing to be a nationwide application.

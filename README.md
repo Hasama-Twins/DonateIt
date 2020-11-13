@@ -92,6 +92,7 @@ Donate goods to people in your neighborhood or pick up other people's excess goo
 
 ### [BONUS] Digital Wireframes & Mockups
 <img src="https://github.com/Hasama-Twins/DonateIt/blob/main/digitalwireframe.pngg" width=400>
+
 ### [BONUS] Interactive Prototype
 <img src='https://recordit.co/oMWGvigB0a.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 ## Schema 

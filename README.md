@@ -93,7 +93,7 @@ Donate goods to people in your neighborhood or pick up other people's excess goo
 ### [BONUS] Digital Wireframes & Mockups
 
 ### [BONUS] Interactive Prototype
-
+<img src='https://recordit.co/oMWGvigB0a.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 ## Schema 
 [This section will be completed in Unit 9]
 ### Models

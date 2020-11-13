@@ -88,7 +88,7 @@ Donate goods to people in your neighborhood or pick up other people's excess goo
     * Detail
 
 ## Wireframes
-<img src="https://github.com/Hasama-Twins/DonateIt/blob/main/IMG_4602.png" width=600>
+<img src="https://github.com/Hasama-Twins/DonateIt/blob/main/SketchWireframe.png" width=600>
 
 ### [BONUS] Digital Wireframes & Mockups
 

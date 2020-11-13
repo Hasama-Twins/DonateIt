@@ -89,7 +89,7 @@ Donate goods to people in your neighborhood or pick up other people's unwanted g
 
 ## Wireframes
 [Add picture of your hand sketched wireframes in this section]
-<img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
+<img src="/.IMG_4602.png" width=600>
 
 ### [BONUS] Digital Wireframes & Mockups
 

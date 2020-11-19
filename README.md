@@ -61,7 +61,7 @@ Donate goods to people in your neighborhood or pick up other people's excess goo
 * Profile
     * User can see their own posted items
 * Maps (optional)
-    * User can find free items on a map within a radius
+    * User can find nearby donation centers on a map
 
 ### 3. Navigation
 
@@ -85,7 +85,7 @@ Donate goods to people in your neighborhood or pick up other people's excess goo
 * Profile
     * Detail
 * Maps (optional)
-    * Detail
+    * Donation Center Detail
 
 ## Wireframes
 <img src="https://github.com/Hasama-Twins/DonateIt/blob/main/SketchWireframe.png" width=400>
@@ -105,7 +105,7 @@ Donate goods to people in your neighborhood or pick up other people's excess goo
    | Property      | Type     | Description |
    | ------------- | -------- | ------------|
    | objectId      | String   | unique id for the user post (default field) |
-   | author        | Pointer to User| registered user |
+   | author        | Pointer to User | registered user |
    | image         | File     | image that user posts |
    | itemName      | String   | name of item | 
    | description   | String   | description of item |
@@ -113,6 +113,17 @@ Donate goods to people in your neighborhood or pick up other people's excess goo
    | comments      | String   | comments from other users |
    | createdAt     | DateTime | date when post is created (default field) |
    | itemStatus    | Boolean  | whether the item has been donated |
+   
+#### Comments
+
+   | Property      | Type     | Description |
+   | ------------- | -------- | ------------|
+   | objectId      | String   | unique id for the user post (default field) |
+   | author        | Pointer to User | registered user |
+   | post          | Pointer to post | post the user commnented on |
+   | text          | String   | comment text |
+   | createdAt     | DateTime | date when post is created (default field) |
+
 
 ### Networking
 #### List of network requests by screen

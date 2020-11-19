@@ -173,7 +173,7 @@ Donate goods to people in your neighborhood or pick up other people's excess goo
             }
          }
          ```
-  - Stream Screen
+  - Details Screen
       - (Read/GET) Query all information for the post
       ```swift
          let query = PFQuery(className:"Post")
@@ -186,6 +186,34 @@ Donate goods to people in your neighborhood or pick up other people's excess goo
            // TODO: Do something with posts...
             }
          }
+       ```
+       - (Read/GET) Query the comments for the post
+      ```swift
+         let query = PFQuery(className:"Comments")
+         query.whereKey("post", equalTo: ) #point to selected post
+         query.findObjectsInBackground { (comments: [PFObject]?, error: Error?) in
+            if let error = error { 
+               print(error.localizedDescription)
+            } else if let comment = comment {
+               print("Successfully retrieved \(comments.count) comment.")
+           // TODO: Do something with comments...
+            }
+         }
+       ```
+       - (Create/COMMENT) Create a new comment object
+        ```swift
+         let itemComment = PFObject(className:"Comments")
+         itemCommnet["author"] = currentUser
+         itemPost["text"] = commentField.text
+         itemPost.saveInBackground { (succeeded, error)  in
+         if (succeeded) {
+               // The post has been saved.
+            } else {
+               // There was a problem, check error.description
+         }
+         ```
    - Maps Screen (optional)
       - (Read/GET) Query all donation centers in community
-      (Still figuring this out)
+      ```swift
+         // (Still figuring this out)
+     ```    

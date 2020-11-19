@@ -97,7 +97,6 @@ Donate goods to people in your neighborhood or pick up other people's excess goo
 <img src='http://g.recordit.co/nYdhCpX0qa.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 ## Schema 
-[This section will be completed in Unit 9]
 
 ### Models
 #### Post
@@ -109,7 +108,8 @@ Donate goods to people in your neighborhood or pick up other people's excess goo
    | image         | File     | image that user posts |
    | itemName      | String   | name of item | 
    | description   | String   | description of item |
-   | locationCity  | String   | location for pickup of item |
+   | locationCity  | String   | city of the item for pickup |
+   | pickupLocation| String   | location for pickup of item |
    | comments      | String   | comments from other users |
    | createdAt     | DateTime | date when post is created (default field) |
    | itemStatus    | Boolean  | whether the item has been donated |
@@ -187,7 +187,7 @@ Donate goods to people in your neighborhood or pick up other people's excess goo
             }
          }
        ```
-       - (Read/GET) Query the comments for the post
+     - (Read/GET) Query the comments for the post
       ```swift
          let query = PFQuery(className:"Comments")
          query.whereKey("post", equalTo: ) #point to selected post
@@ -200,7 +200,7 @@ Donate goods to people in your neighborhood or pick up other people's excess goo
             }
          }
        ```
-       - (Create/COMMENT) Create a new comment object
+    - (Create/COMMENT) Create a new comment object
         ```swift
          let itemComment = PFObject(className:"Comments")
          itemCommnet["author"] = currentUser

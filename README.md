@@ -61,7 +61,7 @@ Donate goods to people in your neighborhood or pick up other people's excess goo
 * Profile
     * User can see their own posted items
 * Maps (optional)
-    * User can find nearby donation centers on a map
+    * User can find free items on a map within a radius
 
 ### 3. Navigation
 
@@ -85,7 +85,7 @@ Donate goods to people in your neighborhood or pick up other people's excess goo
 * Profile
     * Detail
 * Maps (optional)
-    * Donation Center Detail
+    * Detail
 
 ## Wireframes
 <img src="https://github.com/Hasama-Twins/DonateIt/blob/main/SketchWireframe.png" width=400>
@@ -105,27 +105,14 @@ Donate goods to people in your neighborhood or pick up other people's excess goo
    | Property      | Type     | Description |
    | ------------- | -------- | ------------|
    | objectId      | String   | unique id for the user post (default field) |
-   | author        | Pointer to User | registered user |
+   | author        | Pointer to User| registered user |
    | image         | File     | image that user posts |
    | itemName      | String   | name of item | 
    | description   | String   | description of item |
-   | location      | String   | location for pickup of item |
+   | locationCity  | String   | location for pickup of item |
    | comments      | String   | comments from other users |
    | createdAt     | DateTime | date when post is created (default field) |
    | itemStatus    | Boolean  | whether the item has been donated |
-   | updatedAt     | DateTime | date when post is last updated (default field) |
-   
-#### Comments
-
-   | Property      | Type     | Description |
-   | ------------- | -------- | ------------|
-   | objectId      | String   | unique id for the user post (default field) |
-   | author        | Pointer to User | registered user |
-   | post          | Pointer to post | post the user commnented on |
-   | text          | String   | comment text |
-   | createdAt     | DateTime | date when post is created (default field) |
-   | updatedAt     | DateTime | date when post is last updated (default field) |
-
 
 ### Networking
 #### List of network requests by screen
@@ -144,10 +131,51 @@ Donate goods to people in your neighborhood or pick up other people's excess goo
             }
          }
          ```
-      - (Create/POST) Create a new like on a post
    - Create Post Screen
       - (Create/POST) Create a new post object
-   - Details Screen
+        ```swift
+         let itemPost = PFObject(className:"Post")
+         itemPost["author"] = currentUser
+         itemPost["itemName"] = nameTextField.text
+         itemPost["description"] = descriptionTextField.text
+         itemPost["locationCity"] = descriptionTextField.text
+         itemPost["image"] = imageView.image
+         itemPost["itemStatus"] = false
+         itemPost.saveInBackground { (succeeded, error)  in
+         if (succeeded) {
+               // The post has been saved.
+            } else {
+               // There was a problem, check error.description
+         }
+         ```
+   - Stream Screen
       - (Read/GET) Query all posts within the community
-   - Maps Screen
+      ```swift
+         let query = PFQuery(className:"Post")
+         query.whereKey("locationCity", equalTo: ) #current user's city
+         query.order(byDescending: "createdAt")
+         query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in
+            if let error = error { 
+               print(error.localizedDescription)
+            } else if let posts = posts {
+               print("Successfully retrieved.")
+           // TODO: Do something with post details...
+            }
+         }
+         ```
+  - Stream Screen
+      - (Read/GET) Query all information for the post
+      ```swift
+         let query = PFQuery(className:"Post")
+         query.whereKey("objectID", equalTo: ) #object ID of selected post
+         query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in
+            if let error = error { 
+               print(error.localizedDescription)
+            } else if let posts = posts {
+               print("Successfully retrieved \(posts.count) posts.")
+           // TODO: Do something with posts...
+            }
+         }
+   - Maps Screen (optional)
       - (Read/GET) Query all donation centers in community
+      (Still figuring this out)

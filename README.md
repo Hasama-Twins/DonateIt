@@ -100,7 +100,19 @@ Donate goods to people in your neighborhood or pick up other people's excess goo
 [This section will be completed in Unit 9]
 
 ### Models
-[Add table of models]
+#### Post
+
+   | Property      | Type     | Description |
+   | ------------- | -------- | ------------|
+   | objectId      | String   | unique id for the user post (default field) |
+   | author        | Pointer to User| registered user |
+   | image         | File     | image that user posts |
+   | itemName      | String   | name of item | 
+   | description   | String   | description of item |
+   | location      | String   | location for pickup of item |
+   | comments      | String   | comments from other users |
+   | createdAt     | DateTime | date when post is created (default field) |
+   | itemStatus    | Boolean  | whether the item has been donated |
 
 ### Networking
 - [Add list of network requests by screen ]

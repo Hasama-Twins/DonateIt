@@ -113,6 +113,7 @@ Donate goods to people in your neighborhood or pick up other people's excess goo
    | comments      | String   | comments from other users |
    | createdAt     | DateTime | date when post is created (default field) |
    | itemStatus    | Boolean  | whether the item has been donated |
+   | updatedAt     | DateTime | date when post is last updated (default field) |
    
 #### Comments
 
@@ -123,6 +124,7 @@ Donate goods to people in your neighborhood or pick up other people's excess goo
    | post          | Pointer to post | post the user commnented on |
    | text          | String   | comment text |
    | createdAt     | DateTime | date when post is created (default field) |
+   | updatedAt     | DateTime | date when post is last updated (default field) |
 
 
 ### Networking

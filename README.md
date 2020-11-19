@@ -114,6 +114,16 @@ Donate goods to people in your neighborhood or pick up other people's excess goo
    | createdAt     | DateTime | date when post is created (default field) |
    | itemStatus    | Boolean  | whether the item has been donated |
 
+### Comments
+   | Property      | Type     | Description |
+   | ------------- | -------- | ------------|
+   | objectId      | String   | unique id for the user post (default field) |
+   | author        | Pointer to User | registered user |
+   | post          | Pointer to post | post the user commnented on |
+   | text          | String   | comment text |
+   | createdAt     | DateTime | date when post is created (default field) |
+   | updatedAt     | DateTime | date when post is last updated (default field) |
+
 ### Networking
 #### List of network requests by screen
    - Profile Screen

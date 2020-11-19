@@ -115,6 +115,26 @@ Donate goods to people in your neighborhood or pick up other people's excess goo
    | itemStatus    | Boolean  | whether the item has been donated |
 
 ### Networking
-- [Add list of network requests by screen ]
-- [Create basic snippets for each Parse network request]
-- [OPTIONAL: List endpoints if using existing API such as Yelp]
+#### List of network requests by screen
+   - Profile Screen
+      - (Read/GET) Query all posts where user is author
+         ```swift
+         let query = PFQuery(className:"Post")
+         query.whereKey("author", equalTo: currentUser)
+         query.order(byDescending: "createdAt")
+         query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in
+            if let error = error { 
+               print(error.localizedDescription)
+            } else if let posts = posts {
+               print("Successfully retrieved \(posts.count) posts.")
+           // TODO: Do something with posts...
+            }
+         }
+         ```
+      - (Create/POST) Create a new like on a post
+   - Create Post Screen
+      - (Create/POST) Create a new post object
+   - Details Screen
+      - (Read/GET) Query all posts within the community
+   - Maps Screen
+      - (Read/GET) Query all donation centers in community

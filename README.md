@@ -36,13 +36,6 @@ Donate goods to people in your neighborhood or pick up other people's excess goo
 - [ ] User can comment on the post
 - [ ] User can see their own posted items
 
-## Video Walkthrough for Milestone 1
-
-Here's a walkthrough of implemented user stories:
-
-<img src='http://g.recordit.co/cXIPTfRtf2.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
-
-
 
 **Optional Nice-to-have Stories**
 
@@ -51,6 +44,12 @@ Here's a walkthrough of implemented user stories:
 * Search/filter/catagories for items
 * Badges for levels of donating
 * Messaging to contact donaters
+
+## Video Walkthrough for Milestone 1
+
+Here's a walkthrough of implemented user stories:
+
+<img src='http://g.recordit.co/cXIPTfRtf2.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 ### 2. Screen Archetypes
 

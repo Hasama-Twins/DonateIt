@@ -36,6 +36,13 @@ Donate goods to people in your neighborhood or pick up other people's excess goo
 [] User can comment on the post
 [] User can see their own posted items
 
+## Video Walkthrough for Milestone 1
+
+Here's a walkthrough of implemented user stories:
+
+<img src='http://g.recordit.co/cXIPTfRtf2.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+
 
 **Optional Nice-to-have Stories**
 
@@ -203,7 +210,7 @@ Donate goods to people in your neighborhood or pick up other people's excess goo
     - (Create/COMMENT) Create a new comment object
         ```swift
          let itemComment = PFObject(className:"Comments")
-         itemCommnet["author"] = currentUser
+         itemComment["author"] = currentUser
          itemPost["text"] = commentField.text
          itemPost.saveInBackground { (succeeded, error)  in
          if (succeeded) {

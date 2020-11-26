@@ -45,7 +45,7 @@ Donate goods to people in your neighborhood or pick up other people's excess goo
 * Badges for levels of donating
 * Messaging to contact donaters
 
-## Video Walkthrough for Milestone 1
+### Video Walkthrough for Milestone 1
 
 Here's a walkthrough of implemented user stories:
 

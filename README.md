@@ -28,13 +28,13 @@ Donate goods to people in your neighborhood or pick up other people's excess goo
 
 **Required Must-have Stories**
 
-[x] User can register a new account
-[x] User can login to their account
-[x] User can post pictures and details of their free item
-[] User can find free items by scrolling through a feed
-[] User can select item to see additional details
-[] User can comment on the post
-[] User can see their own posted items
+- [x] User can register a new account
+- [x] User can login to their account
+- [x] User can post pictures and details of their free item
+- [ ] User can find free items by scrolling through a feed
+- [ ] User can select item to see additional details
+- [ ] User can comment on the post
+- [ ] User can see their own posted items
 
 
 **Optional Nice-to-have Stories**
@@ -44,6 +44,12 @@ Donate goods to people in your neighborhood or pick up other people's excess goo
 * Search/filter/catagories for items
 * Badges for levels of donating
 * Messaging to contact donaters
+
+### Video Walkthrough for Milestone 1
+
+Here's a walkthrough of implemented user stories:
+
+<img src='http://g.recordit.co/cXIPTfRtf2.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 ### 2. Screen Archetypes
 
@@ -108,7 +114,7 @@ Donate goods to people in your neighborhood or pick up other people's excess goo
    | image         | File     | image that user posts |
    | itemName      | String   | name of item | 
    | description   | String   | description of item |
-   | locationCity  | String   | city of the item for pickup |
+   | pickupTimes   | String   | when the item is available for pickup |
    | pickupLocation| String   | location for pickup of item |
    | comments      | String   | comments from other users |
    | createdAt     | DateTime | date when post is created (default field) |
@@ -203,7 +209,7 @@ Donate goods to people in your neighborhood or pick up other people's excess goo
     - (Create/COMMENT) Create a new comment object
         ```swift
          let itemComment = PFObject(className:"Comments")
-         itemCommnet["author"] = currentUser
+         itemComment["author"] = currentUser
          itemPost["text"] = commentField.text
          itemPost.saveInBackground { (succeeded, error)  in
          if (succeeded) {

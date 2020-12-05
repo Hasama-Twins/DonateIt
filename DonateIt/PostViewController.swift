@@ -75,7 +75,8 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         let file = PFFileObject(data: imageData!)
         
         post["image"] = file
-        
+        post["author"] = PFUser.current()?.username!
+        post["pickupTime"] = itemPickupTime.text!
         
         post.saveInBackground { (success, error) in
             if success {

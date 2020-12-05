@@ -34,17 +34,20 @@ class AllDetailsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-                
-        print("hello")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+
+        author.text = post["author"] as! String
         category.text = post["itemCategory"] as? String
         itemName.text = post["itemName"] as? String
-        if (post["itemStatus"] != nil) == true {
+        if post["itemStatus"] as! Bool == true {
             itemStatus.text = "Status: Donated"
         }
         else {
             itemStatus.text = "Status: Available"
         }
-        itemDescription.text = post["decription"] as? String
+        itemDescription.text = post["description"] as? String
         
         let date = post.createdAt!
         let formatter = DateFormatter()
@@ -59,8 +62,8 @@ class AllDetailsViewController: UIViewController {
         let url = URL(string: urlString)!
         
        itemImage.af_setImage(withURL: url)
-    
     }
+}
     /*
     // MARK: - Navigation
 
@@ -71,4 +74,4 @@ class AllDetailsViewController: UIViewController {
     }
     */
 
-}
+

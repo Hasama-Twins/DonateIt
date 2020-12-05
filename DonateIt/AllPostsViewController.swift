@@ -8,21 +8,47 @@
 import UIKit
 import Parse
 import AlamofireImage
+import CoreLocation
 
-class AllPostsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class AllPostsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, CLLocationManagerDelegate {
     
-
+    
+    @IBOutlet weak var radiusControl: UISegmentedControl!
+    
     var posts = [PFObject]()
+    var userlocation : CLLocation!
+    var geolocation : PFGeoPoint!
+    var radius : Double!
     
     @IBOutlet weak var collectionView: UICollectionView!
     
+    let locationManager = CLLocationManager()
+    
     override func viewDidLoad() {
         
+        locationManager.requestAlwaysAuthorization()
+        
+        locationManager.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled(){
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            self.userlocation = locationManager.location
+            self.geolocation = PFGeoPoint(location: userlocation)
+            print(self.geolocation)
+        }
     }
+    
     
     override func viewDidAppear(_ animated: Bool){
         super.viewDidAppear(animated)
-        
+        if radiusControl.selectedSegmentIndex==0{
+            radius = 5
+        }else if radiusControl.selectedSegmentIndex==1{
+            radius = 10
+        }else if radiusControl.selectedSegmentIndex==2{
+            radius = 20
+        }
         collectionView.delegate = self
         collectionView.dataSource = self
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
@@ -31,9 +57,9 @@ class AllPostsViewController: UIViewController, UICollectionViewDelegate, UIColl
         
         let width = (collectionView.frame.size.width - layout.minimumInteritemSpacing * 2) / 2
             layout.itemSize = CGSize(width: width, height: 230)
-        print(layout.itemSize)
             let query = PFQuery(className:"Item")
             query.limit = 20
+            query.whereKey("location", nearGeoPoint: geolocation, withinMiles: radius)
             query.order(byDescending: "createdAt")
             query.findObjectsInBackground { (posts, error) in
                 if posts != nil {
@@ -42,6 +68,10 @@ class AllPostsViewController: UIViewController, UICollectionViewDelegate, UIColl
                     self.collectionView.layoutIfNeeded()
             }
         }
+    }
+    
+    @IBAction func changeRadius(_ sender: Any) {
+        viewDidAppear(true)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

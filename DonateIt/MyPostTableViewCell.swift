@@ -6,9 +6,11 @@
 //
 
 import UIKit
+import Parse
 
 class MyPostTableViewCell: UITableViewCell {
 
+    var post : PFObject!
     
     
     @IBOutlet weak var itemImage: UIImageView!
@@ -17,6 +19,17 @@ class MyPostTableViewCell: UITableViewCell {
     
     @IBOutlet weak var categoryLabel: UILabel!
     
+    
+    @IBAction func onFlipSwitch(_ sender: Any) {
+        if post["itemStatus"] as! Bool == true{
+            post["itemStatus"] = false
+       }else if post["itemStatus"] as! Bool == false {
+        post["itemStatus"] = true
+       }
+        post.saveInBackground()
+        
+    }
+
     
     @IBOutlet weak var statusSwitch: UISegmentedControl!
     

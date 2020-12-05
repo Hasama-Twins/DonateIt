@@ -29,12 +29,10 @@ class MyPostsTableViewController: UITableViewController {
         let query = PFQuery(className:"Item")
         query.limit = 20
         query.order(byDescending: "createdAt")
-        print("viewdid appear")
         query.whereKey("author", equalTo: PFUser.current()?.username!)
         query.findObjectsInBackground { (posts, error) in
             if posts != nil {
                 self.posts = posts!
-                print(posts)
                 self.tableView.reloadData()
             }
         }
@@ -76,10 +74,10 @@ class MyPostsTableViewController: UITableViewController {
         let url = URL(string: urlString)!
         cell.itemImage.af_setImage(withURL: url)
         
-        if (post["itemStatus"] != nil) == true {
-            cell.statusSwitch.selectedSegmentIndex = 2
-        }else{
+        if post["itemStatus"] as! Bool == true {
             cell.statusSwitch.selectedSegmentIndex = 1
+        }else if post["itemStatus"] as! Bool == false{
+            cell.statusSwitch.selectedSegmentIndex = 0
         }
         
         let date = post.createdAt!
@@ -87,7 +85,9 @@ class MyPostsTableViewController: UITableViewController {
         formatter.timeZone = NSTimeZone(name: "PST") as TimeZone?
         formatter.dateFormat = "MMM d, y"
         cell.dateLabel.text = formatter.string(from: date as! Date)
-
+        
+        cell.post = post
+        
         return cell
     }
     
@@ -127,14 +127,20 @@ class MyPostsTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toDetails"{
+            let cell = sender as! UITableViewCell
+            let indexPath = tableView.indexPath(for: cell)
+            let MyDetailsViewController = segue.destination as! myDetailsViewController
+            MyDetailsViewController.post = posts[indexPath!.row] as? PFObject
+        }
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
-    */
+    
 
 }

@@ -21,6 +21,9 @@
 		4B1C6AD4257A23E400048A4C /* PostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1C6AD3257A23E400048A4C /* PostCollectionViewCell.swift */; };
 		4B1C6AD9257A23FF00048A4C /* MyPostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1C6AD8257A23FF00048A4C /* MyPostTableViewCell.swift */; };
 		4B1C6AE1257A33BC00048A4C /* AllDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1C6AE0257A33BB00048A4C /* AllDetailsViewController.swift */; };
+		4B1C6AE6257B662000048A4C /* myDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1C6AE5257B661F00048A4C /* myDetailsViewController.swift */; };
+		4B1C6AEE257B930000048A4C /* DonationMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1C6AED257B92FF00048A4C /* DonationMapViewController.swift */; };
+		4B1C6AF3257BA54600048A4C /* CenterDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B1C6AF2257BA54500048A4C /* CenterDetailsViewController.swift */; };
 		B01BB086F84E06EC8414E0CC /* Pods_DonateIt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EB739AC99438AD60BA000945 /* Pods_DonateIt.framework */; };
 		B1B0699055A9B98D97A8F77C /* Pods_DonateItTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F87F2D4032EFF91E0B01C935 /* Pods_DonateItTests.framework */; };
 		C89927CEC9A6C0AD59D3C0B0 /* Pods_DonateIt_DonateItUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1C2BF9B4F5D8B3BF8C8241A3 /* Pods_DonateIt_DonateItUITests.framework */; };
@@ -66,6 +69,9 @@
 		4B1C6AD3257A23E400048A4C /* PostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCollectionViewCell.swift; sourceTree = "<group>"; };
 		4B1C6AD8257A23FF00048A4C /* MyPostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPostTableViewCell.swift; sourceTree = "<group>"; };
 		4B1C6AE0257A33BB00048A4C /* AllDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllDetailsViewController.swift; sourceTree = "<group>"; };
+		4B1C6AE5257B661F00048A4C /* myDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myDetailsViewController.swift; sourceTree = "<group>"; };
+		4B1C6AED257B92FF00048A4C /* DonationMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DonationMapViewController.swift; sourceTree = "<group>"; };
+		4B1C6AF2257BA54500048A4C /* CenterDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CenterDetailsViewController.swift; sourceTree = "<group>"; };
 		84F25A9BB65164DA433FA6EE /* Pods-DonateItTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DonateItTests.debug.xcconfig"; path = "Target Support Files/Pods-DonateItTests/Pods-DonateItTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8EDD1002A126F0B5667C8892 /* Pods-DonateItTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DonateItTests.release.xcconfig"; path = "Target Support Files/Pods-DonateItTests/Pods-DonateItTests.release.xcconfig"; sourceTree = "<group>"; };
 		94DDC600199CD5F30A3534FF /* Pods-DonateIt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DonateIt.release.xcconfig"; path = "Target Support Files/Pods-DonateIt/Pods-DonateIt.release.xcconfig"; sourceTree = "<group>"; };
@@ -153,7 +159,10 @@
 				4B1C6ACE257A236800048A4C /* AllPostsViewController.swift */,
 				4B1C6AD3257A23E400048A4C /* PostCollectionViewCell.swift */,
 				4B1C6AD8257A23FF00048A4C /* MyPostTableViewCell.swift */,
+				4B1C6AE5257B661F00048A4C /* myDetailsViewController.swift */,
 				4B1C6AE0257A33BB00048A4C /* AllDetailsViewController.swift */,
+				4B1C6AED257B92FF00048A4C /* DonationMapViewController.swift */,
+				4B1C6AF2257BA54500048A4C /* CenterDetailsViewController.swift */,
 			);
 			path = DonateIt;
 			sourceTree = "<group>";
@@ -429,8 +438,11 @@
 				4B1C6AAA256F89B700048A4C /* PostViewController.swift in Sources */,
 				4B1C6AD9257A23FF00048A4C /* MyPostTableViewCell.swift in Sources */,
 				4B1C6A97256F7E7700048A4C /* LoginViewController.swift in Sources */,
+				4B1C6AE6257B662000048A4C /* myDetailsViewController.swift in Sources */,
+				4B1C6AF3257BA54600048A4C /* CenterDetailsViewController.swift in Sources */,
 				4B1C6AE1257A33BC00048A4C /* AllDetailsViewController.swift in Sources */,
 				4B1C6A61256F71F200048A4C /* AppDelegate.swift in Sources */,
+				4B1C6AEE257B930000048A4C /* DonationMapViewController.swift in Sources */,
 				4B1C6AD4257A23E400048A4C /* PostCollectionViewCell.swift in Sources */,
 				4B1C6A63256F71F200048A4C /* SceneDelegate.swift in Sources */,
 			);

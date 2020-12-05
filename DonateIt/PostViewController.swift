@@ -8,9 +8,12 @@
 import UIKit
 import AlamofireImage
 import Parse
+import CoreLocation
 
-class PostViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
-
+class PostViewController: UIViewController, CLLocationManagerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    let locationManager = CLLocationManager()
+    
     @IBOutlet var itemName: UITextField!
     
     @IBOutlet var itemDescription: UITextField!
@@ -21,17 +24,32 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     @IBOutlet var itemImage: UIImageView!
     
+    var userlocation: CLLocation!
+    var geolocation: PFGeoPoint!
     
     var pickerData: [String] = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        locationManager.requestAlwaysAuthorization()
+        
+        locationManager.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled(){
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            self.userlocation = locationManager.location
+            self.geolocation = PFGeoPoint(location: userlocation)
+        }
+        
         self.itemCategory.delegate = self
         self.itemCategory.dataSource = self
         
         pickerData = ["Clothes","Electronics","Food", "Furniture","Sporting Equipment","Toys", "Other"]
     }
+    
+    
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
@@ -66,6 +84,7 @@ class PostViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     @IBAction func onPostButton(_ sender: Any) {
         let post = PFObject(className: "Item")
         
+        post["location"] = geolocation
         post["itemName"] = itemName.text!
         post["description"] = itemDescription.text!
         post["itemCategory"] = pickerData[itemCategory.selectedRow(inComponent: 0)]

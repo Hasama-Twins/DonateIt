@@ -31,10 +31,10 @@ Donate goods to people in your neighborhood or pick up other people's excess goo
 - [x] User can register a new account
 - [x] User can login to their account
 - [x] User can post pictures and details of their free item
-- [ ] User can find free items by scrolling through a feed
-- [ ] User can select item to see additional details
+- [x] User can find free items by scrolling through a feed
+- [x] User can select item to see additional details
 - [ ] User can comment on the post
-- [ ] User can see their own posted items
+- [x] User can see their own posted items
 
 
 **Optional Nice-to-have Stories**
@@ -50,6 +50,17 @@ Donate goods to people in your neighborhood or pick up other people's excess goo
 Here's a walkthrough of implemented user stories:
 
 <img src='http://g.recordit.co/cXIPTfRtf2.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+### Video Walkthrough for Milestone 2
+
+Here's a walkthrough of implemented user stories:
+
+<img src='http://g.recordit.co/Ny4Nmj1cOB.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+Here's another more recently developed walkthrough:
+
+<img src='http://g.recordit.co/NJv7xHE8nB.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
 
 ### 2. Screen Archetypes
 

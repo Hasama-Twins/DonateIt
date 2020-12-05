@@ -57,6 +57,10 @@ Here's a walkthrough of implemented user stories:
 
 <img src='http://g.recordit.co/Ny4Nmj1cOB.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
+Here's another more recently developed walkthrough:
+
+<img src='http://g.recordit.co/NJv7xHE8nB.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
 
 ### 2. Screen Archetypes
 

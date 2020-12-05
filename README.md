@@ -51,6 +51,13 @@ Here's a walkthrough of implemented user stories:
 
 <img src='http://g.recordit.co/cXIPTfRtf2.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
+### Video Walkthrough for Milestone 2
+
+Here's a walkthrough of implemented user stories:
+
+<img src='http://g.recordit.co/Ny4Nmj1cOB.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
+
 ### 2. Screen Archetypes
 
 * Login

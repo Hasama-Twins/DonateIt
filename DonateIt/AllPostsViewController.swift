@@ -15,6 +15,7 @@ class AllPostsViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     @IBOutlet weak var radiusControl: UISegmentedControl!
     
+    @IBOutlet weak var resultcount: UILabel!
     var posts = [PFObject]()
     var userlocation : CLLocation!
     var geolocation : PFGeoPoint!
@@ -52,11 +53,15 @@ class AllPostsViewController: UIViewController, UICollectionViewDelegate, UIColl
         collectionView.delegate = self
         collectionView.dataSource = self
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-            layout.minimumLineSpacing = 10
-            layout.minimumInteritemSpacing = 5
+            layout.minimumLineSpacing = 15
+            layout.minimumInteritemSpacing = 8
+     
         
         let width = (collectionView.frame.size.width - layout.minimumInteritemSpacing * 2) / 2
             layout.itemSize = CGSize(width: width, height: 230)
+        
+        
+        
             let query = PFQuery(className:"Item")
             query.limit = 20
             query.whereKey("location", nearGeoPoint: geolocation, withinMiles: radius)
@@ -68,6 +73,7 @@ class AllPostsViewController: UIViewController, UICollectionViewDelegate, UIColl
                     self.collectionView.layoutIfNeeded()
             }
         }
+    
     }
     
     @IBAction func changeRadius(_ sender: Any) {
@@ -75,6 +81,7 @@ class AllPostsViewController: UIViewController, UICollectionViewDelegate, UIColl
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        resultcount.text = String(posts.count)
         return posts.count
     }
     

@@ -23,6 +23,10 @@ class myDetailsViewController: UIViewController {
         @IBOutlet weak var itemDescription: UILabel!
     @IBOutlet weak var pickupTime: UILabel?
         @IBOutlet weak var dateLabel: UILabel!
+    
+    
+    @IBOutlet weak var donatedLabel: UILabel!
+    
         
         override func viewDidLoad() {
             super.viewDidLoad()
@@ -32,9 +36,11 @@ class myDetailsViewController: UIViewController {
             itemName.text = post["itemName"] as? String
             if post["itemStatus"] as! Bool == true {
                 itemStatus.text = "Status: Donated"
+                donatedLabel.isHidden = false
             }
             else {
                 itemStatus.text = "Status: Available"
+                donatedLabel.isHidden = true
             }
             itemDescription.text = post["description"] as? String
             

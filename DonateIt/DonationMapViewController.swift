@@ -51,16 +51,21 @@ class DonationMapViewController: UIViewController {
         locationManager.startUpdatingLocation()
     }
     private func addAnotations() {
-        let appleParkAnnotation = MKPointAnnotation()
-        appleParkAnnotation.title = "Goodwill Donation Center San Pedro"
-        appleParkAnnotation.coordinate = CLLocationCoordinate2D(latitude: 33.75610982095931, longitude: -118.31113053442913)
+        let dcenter1 = MKPointAnnotation()
+        dcenter1.title = "Goodwill Donation Center San Pedro"
+        dcenter1.coordinate = CLLocationCoordinate2D(latitude: 33.75610982095931, longitude: -118.31113053442913)
         
-        let ortegaParkAnnotation = MKPointAnnotation()
-        ortegaParkAnnotation.title = "Palos Verdes Resale"
-        ortegaParkAnnotation.coordinate = CLLocationCoordinate2D(latitude: 33.789901347376976, longitude: -118.32340051387878)
+        let dcenter2 = MKPointAnnotation()
+        dcenter2.title = "Palos Verdes Resale"
+        dcenter2.coordinate = CLLocationCoordinate2D(latitude: 33.789901347376976, longitude: -118.32340051387878)
+    
+        let dcenter3 = MKPointAnnotation()
+        dcenter3.title = "Little Sisters of the Poor"
+        dcenter3.coordinate = CLLocationCoordinate2D(latitude: 33.72510039085648, longitude: -118.31064810481448)
        
-        mapView.addAnnotation(appleParkAnnotation)
-        mapView.addAnnotation(ortegaParkAnnotation)
+        mapView.addAnnotation(dcenter1)
+        mapView.addAnnotation(dcenter2)
+        mapView.addAnnotation(dcenter3)
     }
     
     

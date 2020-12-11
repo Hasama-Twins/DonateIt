@@ -8,6 +8,7 @@
 import UIKit
 import Parse
 import AlamofireImage
+import MapKit
 
 class AllDetailsViewController: UIViewController {
     
@@ -31,9 +32,12 @@ class AllDetailsViewController: UIViewController {
 
     @IBOutlet weak var dateLabel: UILabel!
     
+    @IBOutlet weak var donatedLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       /// UIImageView.layer.cornerRadius = 7.0
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -43,9 +47,11 @@ class AllDetailsViewController: UIViewController {
         itemName.text = post["itemName"] as? String
         if post["itemStatus"] as! Bool == true {
             itemStatus.text = "Status: Donated"
+            donatedLabel.isHidden = false
         }
         else {
             itemStatus.text = "Status: Available"
+            donatedLabel.isHidden = true
         }
         itemDescription.text = post["description"] as? String
         
@@ -63,7 +69,36 @@ class AllDetailsViewController: UIViewController {
         
        itemImage.af_setImage(withURL: url)
     }
+    
+    
+    @IBAction func getDirectionsButton(_ sender: Any) {
+    
+        let placemark = post["location"] as! PFGeoPoint
+        let itemLatitude = placemark.latitude
+        let itemLongitude = placemark.longitude
+        let coordinates = CLLocationCoordinate2D(latitude: itemLatitude, longitude: itemLongitude)
+        let mkplacemark = MKPlacemark(coordinate: coordinates)
+        let mapItem = MKMapItem(placemark: mkplacemark)
+        mapItem.name = post["itemName"] as! String?
+        mapItem.openInMaps()
+    }
+    
+    
+    @IBAction func onContactButton(_ sender: Any) {
+        let number = post["phoneNumber"] as! String
+        if let url =  URL(string: "sms://" + number) {
+            if UIApplication.shared.canOpenURL(url) {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                    }
+        }
+        
+    }
+    
 }
+
+
+
+
     /*
     // MARK: - Navigation
 

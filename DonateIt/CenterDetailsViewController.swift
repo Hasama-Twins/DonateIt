@@ -10,8 +10,7 @@ import Parse
 
 class CenterDetailsViewController: UIViewController {
 
-    var dcname : String!
-    var centers = [PFObject]()
+    var dcobj : PFObject!
     
     @IBOutlet weak var centerName: UILabel!
     
@@ -32,23 +31,13 @@ class CenterDetailsViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        print(dcobj!)
         
-        let query = PFQuery(className:"DonationCenters")
-        query.limit = 20
-        query.whereKey("Name", equalTo: dcname!)
-        query.findObjectsInBackground { (centers, error) in
-            if centers != nil {
-                self.centers = centers!
-
-            }
-        }
-        print(centers)
-        let center = centers[0]
-        centerName.text = center["Name"] as? String
-        centerDescription.text = center["Description"] as? String
-        centerHours.text = center["hours"] as? String
-        address.text = center["Address"] as? String
-        phoneNumber.text = center["PhoneNumber"] as? String
+        centerName.text = dcobj["Name"] as? String
+        centerDescription.text = dcobj["Description"] as? String
+        centerHours.text = dcobj["hours"] as? String
+        address.text = dcobj["Address"] as? String
+        phoneNumber.text = dcobj["PhoneNumber"] as? String
     }
     
     

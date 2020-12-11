@@ -24,6 +24,8 @@ class PostViewController: UIViewController, CLLocationManagerDelegate, UIImagePi
     
     @IBOutlet var itemImage: UIImageView!
     
+    @IBOutlet weak var phoneNumber: UITextField!
+    
     var userlocation: CLLocation!
     var geolocation: PFGeoPoint!
     
@@ -63,6 +65,7 @@ class PostViewController: UIViewController, CLLocationManagerDelegate, UIImagePi
         return pickerData[row]
     }
     @IBAction func onPhotoButton(_ sender: Any) {
+        print("tapped")
         let picker = UIImagePickerController()
         picker.delegate = self
         picker.allowsEditing = true
@@ -89,7 +92,7 @@ class PostViewController: UIViewController, CLLocationManagerDelegate, UIImagePi
         post["description"] = itemDescription.text!
         post["itemCategory"] = pickerData[itemCategory.selectedRow(inComponent: 0)]
         post["itemStatus"] = false
-        
+        post["phoneNumber"] = phoneNumber.text!
         let imageData = itemImage.image!.pngData()
         let file = PFFileObject(data: imageData!)
         
@@ -106,6 +109,12 @@ class PostViewController: UIViewController, CLLocationManagerDelegate, UIImagePi
             }
         }
     }
+    
+    
+    @IBAction func dismissKeyboard(_ sender: Any) {
+        self.view.endEditing(true)
+    }
+    
     /*
     // MARK: - Navigation
 

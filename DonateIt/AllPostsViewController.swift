@@ -35,7 +35,7 @@ class AllPostsViewController: UIViewController, UICollectionViewDelegate, UIColl
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             self.userlocation = locationManager.location
             self.geolocation = PFGeoPoint(location: userlocation)
-            print(self.geolocation)
+            print(self.geolocation!)
         }
     }
     
@@ -88,6 +88,18 @@ class AllPostsViewController: UIViewController, UICollectionViewDelegate, UIColl
         let url = URL(string: urlString)!
         
         cell.itemImage.af_setImage(withURL: url)
+        
+        
+        cell.contentView.layer.cornerRadius = 7.0
+        cell.contentView.layer.borderWidth = 1.0
+        cell.contentView.layer.borderColor = UIColor.clear.cgColor
+        cell.contentView.layer.masksToBounds = true
+        cell.layer.shadowColor = UIColor.black.cgColor
+        cell.layer.shadowOffset = CGSize(width: 0, height: 2.0)
+        cell.layer.shadowRadius = 3.0
+        cell.layer.shadowOpacity = 0.5
+        cell.layer.masksToBounds = false
+        cell.layer.shadowPath = UIBezierPath(roundedRect: cell.bounds, cornerRadius: cell.contentView.layer.cornerRadius).cgPath
         
         return cell
     }

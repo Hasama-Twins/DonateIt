@@ -3,6 +3,12 @@ Original App Design Project
 
 # DonateIt
 
+## Demo
+
+[![](http://img.youtube.com/vi/bDuJI2K7Gj0/0.jpg)](http://www.youtube.com/watch?v=bDuJI2K7Gj0 "EventCheck Demo")
+
+Youtube Demo: https://youtu.be/bDuJI2K7Gj0
+
 ## Table of Contents
 1. [Overview](#Overview)
 1. [Product Spec](#Product-Spec)

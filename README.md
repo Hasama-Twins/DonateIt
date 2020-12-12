@@ -5,7 +5,7 @@ Original App Design Project
 
 ## Demo
 
-[![](http://img.youtube.com/vi/NbfG26QO_wQ/0.jpg)](http://https://youtu.be/NbfG26QO_wQ "DonateIt Demo")
+[![](http://img.youtube.com/vi/NbfG26QO_wQ/0.jpg)](http://www.youtube.com/watch?v=NbfG26QO_wQ "DonateIt Demo")
 
 Youtube Demo: https://youtu.be/NbfG26QO_wQ
 

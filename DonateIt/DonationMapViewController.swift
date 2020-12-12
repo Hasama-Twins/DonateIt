@@ -18,6 +18,7 @@ class DonationMapViewController: UIViewController {
     private var currentCoordinate = CLLocationCoordinate2D()
     var selectedTitle : String!
     var selectedPFObject: PFObject!
+    var mapItem: MKMapItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,30 +77,8 @@ class DonationMapViewController: UIViewController {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
         
-        print("start Query")
-        let query = PFQuery(className:"DonationCenters")
-        query.limit = 100
-        query.whereKey("Name", equalTo: selectedTitle! as String)
-        print("afterwherekey")
-        
-        query.findObjectsInBackground{ (centers, error) in
-            print("hello")
-            if let error = error {
-                print(error)
-                return
-            }
-            if centers != nil {
-                print("error nil")
-                self.centers = centers!
-            }
-        print(centers)
-        print("query complete")
-
-            self.selectedPFObject = centers![0]
-            print(self.selectedPFObject)
-            }
         let centerDetailsViewController = segue.destination as! CenterDetailsViewController
-        centerDetailsViewController.dcobj = self.selectedPFObject as PFObject
+        centerDetailsViewController.location = self.mapItem as! MKMapItem
         
         
     }
@@ -164,12 +143,10 @@ extension DonationMapViewController: MKMapViewDelegate{
         
         let coordinates = (view.annotation?.coordinate)!
         let mkplacemark = MKPlacemark(coordinate: coordinates)
-        let mapItem = MKMapItem(placemark: mkplacemark)
+        mapItem = MKMapItem(placemark: mkplacemark)
         mapItem.name = selectedTitle
-        mapItem.openInMaps()
-        
-        
-        //performSegue(withIdentifier: "centerInfo", sender: Any?(nilLiteral: ()))
+    
+        performSegue(withIdentifier: "centerInfo", sender: Any?(nilLiteral: ()))
         
     }
     

@@ -48,7 +48,7 @@ class PostViewController: UIViewController, CLLocationManagerDelegate, UIImagePi
         self.itemCategory.delegate = self
         self.itemCategory.dataSource = self
         
-        pickerData = ["Clothes","Electronics","Food", "Furniture","Sporting Equipment","Toys", "Other"]
+        pickerData = ["Clothes","Electronics","Food", "Furniture","Sports","Toys", "Other"]
     }
     
     
@@ -65,11 +65,16 @@ class PostViewController: UIViewController, CLLocationManagerDelegate, UIImagePi
         return pickerData[row]
     }
     @IBAction func onPhotoButton(_ sender: Any) {
-        print("tapped")
         let picker = UIImagePickerController()
         picker.delegate = self
         picker.allowsEditing = true
-        picker.sourceType = .photoLibrary
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                    picker.sourceType = .camera
+                } else {
+                    picker.sourceType = .photoLibrary
+                }
+        
+        //picker.sourceType = .photoLibrary
         present(picker, animated: true, completion: nil)
     }
     

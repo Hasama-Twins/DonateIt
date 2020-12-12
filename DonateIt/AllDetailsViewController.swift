@@ -34,13 +34,9 @@ class AllDetailsViewController: UIViewController {
     
     @IBOutlet weak var donatedLabel: UILabel!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-       /// UIImageView.layer.cornerRadius = 7.0
-        
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
 
         author.text = post["author"] as! String
         category.text = post["itemCategory"] as? String
@@ -68,6 +64,8 @@ class AllDetailsViewController: UIViewController {
         let url = URL(string: urlString)!
         
        itemImage.af_setImage(withURL: url)
+        itemImage.layer.cornerRadius = 20
+        itemImage.clipsToBounds = true
     }
     
     
@@ -86,7 +84,20 @@ class AllDetailsViewController: UIViewController {
     
     @IBAction func onContactButton(_ sender: Any) {
         let number = post["phoneNumber"] as! String
-        if let url =  URL(string: "sms://" + number) {
+        let username = post["author"] as! String
+        let selectitem = post["itemName"] as! String
+        var itemname = ""
+        for char in selectitem{
+            if char == " "{
+                itemname += "%20"
+            }else{
+                itemname += String(char)
+            }
+        }
+        let body1 = number + "&body=Hello%20@"
+        let body2 = username + ",%20I%20am%20interested%20in%20the%20"
+        let body3 = itemname as! String + "%20you%20are%20donating%20on%20DonateIt..."
+        if let url =  URL(string: "sms:" + body1 + body2 + body3) {
             if UIApplication.shared.canOpenURL(url) {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
                     }

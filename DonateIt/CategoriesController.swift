@@ -1,33 +1,21 @@
 //
-//  CenterDetailsViewController.swift
+//  CategoriesController.swift
 //  DonateIt
 //
-//  Created by Evelyn Hasama on 12/5/20.
+//  Created by Evelyn Hasama on 12/11/20.
 //
 
 import UIKit
-import Parse
-import MapKit
 
-class CenterDetailsViewController: UIViewController {
+class CategoriesController: UIViewController {
 
-    var location : MKMapItem!
-    @IBOutlet weak var itemImage: UIImageView!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-        itemImage.layer.cornerRadius = 20
-        itemImage.clipsToBounds = true
+
         // Do any additional setup after loading the view.
     }
- 
-  
     
-    @IBAction func onDirections(_ sender: Any) {
-        location.openInMaps()
-    }
-    
+
     /*
     // MARK: - Navigation
 

@@ -57,6 +57,8 @@ class myDetailsViewController: UIViewController {
             let url = URL(string: urlString)!
             
            itemImage.af_setImage(withURL: url)
+            itemImage.layer.cornerRadius = 20
+            itemImage.clipsToBounds = true
         
         }
     /*

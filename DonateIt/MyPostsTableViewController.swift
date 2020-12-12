@@ -9,13 +9,12 @@ import UIKit
 import Parse
 import AlamofireImage
 
-class MyPostsTableViewController: UITableViewController {
+class MyPostsTableViewController: UITableViewController{
     
     var posts = [PFObject]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -87,9 +86,11 @@ class MyPostsTableViewController: UITableViewController {
         cell.dateLabel.text = formatter.string(from: date as! Date)
         
         cell.post = post
+        cell.setupCell()
         
         return cell
     }
+    
     
 
     /*
@@ -141,6 +142,4 @@ class MyPostsTableViewController: UITableViewController {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
-    
-
 }

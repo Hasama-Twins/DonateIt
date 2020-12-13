@@ -17,13 +17,13 @@ Youtube Demo: https://youtu.be/NbfG26QO_wQ
 
 ## Overview
 ### Description
-Donate goods to people in your neighborhood or pick up other people's excess goods in order to help minimize waste and be sustainable.
+Donate goods to people and donation centers in your neighborhood or pick up other people's excess goods in order to help minimize waste and be sustainable.
 
 ### App Evaluation
 [Evaluation of your app across the following attributes]
 - **Category:** Shopping (free items though)
-- **Mobile:** uses camera, uses Apple maps, mobile first experience.
-- **Story:** Allows users to donate unwanted goods to people in your neighborhood or pick up other people's excess goods in order to help minimize waste and be sustainable.
+- **Mobile:** uses camera, uses Apple maps, uses Messages, mobile first experience.
+- **Story:** Allows users to donate unwanted goods to people and donation centers in your neighborhood or pick up other people's excess goods in order to help minimize waste and be sustainable.
 - **Market:** Anyone that has something to donate or something in excess or anyone seeking free goods.
 - **Habit:** Users can find FREE items on the app daily and clean out their houses by donating their unused items. Could find someone's unwanted treasure.
 - **Scope:** DonateIt starts out with a narrow scope of sharing free items within a small community. Possible expansions for a larger scope include growing to be a nationwide application.
@@ -39,16 +39,14 @@ Donate goods to people in your neighborhood or pick up other people's excess goo
 - [x] User can post pictures and details of their free item
 - [x] User can find free items by scrolling through a feed
 - [x] User can select item to see additional details
-- [ ] User can comment on the post
 - [x] User can see their own posted items
 
 
 **Optional Nice-to-have Stories**
 
-* Find free items on a map within a radius
+* Find donation centers on a map
 * Receive the address and mapping to the item
-* Search/filter/catagories for items
-* Badges for levels of donating
+* Filter catagories and radius for items
 * Messaging to contact donaters
 
 ### Video Walkthrough for Milestone 1
@@ -77,51 +75,56 @@ Here's a walkthrough of implemented user stories:
 
 * Login
    * User can login to their account
-* Register
    * User can register a new account
 * Stream
     * User can find free items by scrolling through a feed
-* Detail
+    * User can filter for different mile radius
+    * User can filter by category
+* Detail (Item)
     * User can select item to see additional details
-    * User can comment on the post
+    * User can get directions to the item's location
+    * User can contact the item's owner
+* Detail (My Item)
+    * User can select item to see additional of their details
 * Creation
     * User can post pictures and details of their free item
 * Profile
     * User can see their own posted items
-* Maps (optional)
-    * User can find free items on a map within a radius
+    * User can change the status of their item to Donated or Available
+* Maps
+    * User can find donation centers on a map
+* Detail (Center)
+    * User can select pin on map to see additional details
+    * User can get directions to the center's location
 
 ### 3. Navigation
 
 **Tab Navigation** (Tab to Screen)
 
 * Stream
-* Maps (optional)
-* Creation
+* Maps
 * Profile
 
 **Flow Navigation** (Screen to Screen)
 
 * Login
    * Stream
-* Register
-   * Stream
 * Stream
-    * Detail
-* Creation
-    * Stream
+    * Detail (Item)
 * Profile
-    * Detail
-* Maps (optional)
-    * Detail
+    * Detail (My Item)
+    * Creation
+    * Login
+* Maps
+    * Detail (Center)
 
-## Wireframes
+## Orginal Wireframes
 <img src="https://github.com/Hasama-Twins/DonateIt/blob/main/SketchWireframe.png" width=400>
 
-### [BONUS] Digital Wireframes & Mockups
+### [BONUS] Original Digital Wireframes & Mockups
 <img src="https://github.com/Hasama-Twins/DonateIt/blob/main/digitalwireframe.png" width=800>
 
-### [BONUS] Interactive Prototype
+### [BONUS] Original Interactive Prototype
 <img src='http://g.recordit.co/nYdhCpX0qa.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 ## Schema 
@@ -135,11 +138,11 @@ Here's a walkthrough of implemented user stories:
    | author        | Pointer to User| registered user |
    | image         | File     | image that user posts |
    | itemName      | String   | name of item | 
+   | itemCategory  | String   | category of item |
    | description   | String   | description of item |
    | pickupTimes   | String   | when the item is available for pickup |
-   | pickupLocation| GeoCoord | location for pickup of item |
-   | phonenumber   | String   | user's phone number |
-   | comments      | String   | comments from other users |
+   | location      | GeoCoord | location for pickup of item |
+   | phoneNumber   | String   | user's phone number |
    | createdAt     | DateTime | date when post is created (default field) |
    | itemStatus    | Boolean  | whether the item has been donated |
 
@@ -148,49 +151,70 @@ Here's a walkthrough of implemented user stories:
    - Profile Screen
       - (Read/GET) Query all posts where user is author
          ```swift
-         let query = PFQuery(className:"Post")
-         query.whereKey("author", equalTo: currentUser)
-         query.order(byDescending: "createdAt")
-         query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in
-            if let error = error { 
-               print(error.localizedDescription)
-            } else if let posts = posts {
-               print("Successfully retrieved \(posts.count) posts.")
-           // TODO: Do something with posts...
+         let query = PFQuery(className:"Item")
+        query.limit = 20
+        query.order(byDescending: "createdAt")
+        query.whereKey("author", equalTo: PFUser.current()?.username!)
+        query.findObjectsInBackground { (posts, error) in
+            if posts != nil {
+                self.posts = posts!
+                self.tableView.reloadData()
             }
-         }
+        }
          ```
    - Create Post Screen
       - (Create/POST) Create a new post object
         ```swift
-         let itemPost = PFObject(className:"Post")
-         itemPost["author"] = currentUser
-         itemPost["itemName"] = nameTextField.text
-         itemPost["description"] = descriptionTextField.text
-         itemPost["locationCity"] = descriptionTextField.text
-         itemPost["image"] = imageView.image
-         itemPost["itemStatus"] = false
-         itemPost.saveInBackground { (succeeded, error)  in
-         if (succeeded) {
-               // The post has been saved.
+         let post = PFObject(className: "Item")
+       
+        post["location"] = geolocation
+        post["itemName"] = itemName.text!
+        post["description"] = itemDescription.text!
+        post["itemCategory"] = pickerData[itemCategory.selectedRow(inComponent: 0)]
+        post["itemStatus"] = false
+        post["phoneNumber"] = phoneNumber.text!
+        let imageData = itemImage.image!.pngData()
+        let file = PFFileObject(data: imageData!)
+        
+        post["image"] = file
+        post["author"] = PFUser.current()?.username!
+        post["pickupTime"] = itemPickupTime.text!
+        
+        post.saveInBackground { (success, error) in
+            if success {
+                print("saved")
+                self.navigationController?.popToRootViewController(animated: true)
             } else {
-               // There was a problem, check error.description
-         }
+                print("error")
+            }
+        }
          ```
    - Stream Screen
       - (Read/GET) Query all posts within the community
       ```swift
-         let query = PFQuery(className:"Post")
-         query.whereKey("locationCity", equalTo: ) #current user's city
-         query.order(byDescending: "createdAt")
-         query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in
-            if let error = error { 
-               print(error.localizedDescription)
-            } else if let posts = posts {
-               print("Successfully retrieved.")
-           // TODO: Do something with post details...
+         let query = PFQuery(className:"Item")
+            query.limit = 60
+            query.whereKey("location", nearGeoPoint: geolocation, withinMiles: radius)
+            query.order(byDescending: "createdAt")
+            query.findObjectsInBackground { (posts, error) in
+                if posts != nil {
+                    self.posts = posts!
+                    let myindex = self.segmentedControl.selectedSegmentIndex
+                    if myindex == 0{
+                        self.filteredposts = self.posts
+                    } else{
+                        self.filteredposts = []
+                        let mydata = ["All","Clothes","Electronics","Food", "Furniture","Sports","Toys", "Other"]
+                        for post in self.posts{
+                            if post["itemCategory"] as! String == mydata[myindex]{
+                                self.filteredposts.append(post)
+                            }
+                        }
+                    }
+                    self.collectionView.reloadData()
+                    self.collectionView.layoutIfNeeded()
             }
-         }
+        }
          ```
 
 

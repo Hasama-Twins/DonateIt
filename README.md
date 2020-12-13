@@ -137,20 +137,11 @@ Here's a walkthrough of implemented user stories:
    | itemName      | String   | name of item | 
    | description   | String   | description of item |
    | pickupTimes   | String   | when the item is available for pickup |
-   | pickupLocation| String   | location for pickup of item |
+   | pickupLocation| GeoCoord | location for pickup of item |
+   | phonenumber   | String   | user's phone number |
    | comments      | String   | comments from other users |
    | createdAt     | DateTime | date when post is created (default field) |
    | itemStatus    | Boolean  | whether the item has been donated |
-
-### Comments
-   | Property      | Type     | Description |
-   | ------------- | -------- | ------------|
-   | objectId      | String   | unique id for the user post (default field) |
-   | author        | Pointer to User | registered user |
-   | post          | Pointer to post | post the user commnented on |
-   | text          | String   | comment text |
-   | createdAt     | DateTime | date when post is created (default field) |
-   | updatedAt     | DateTime | date when post is last updated (default field) |
 
 ### Networking
 #### List of network requests by screen
@@ -201,47 +192,5 @@ Here's a walkthrough of implemented user stories:
             }
          }
          ```
-  - Details Screen
-      - (Read/GET) Query all information for the post
-      ```swift
-         let query = PFQuery(className:"Post")
-         query.whereKey("objectID", equalTo: ) #object ID of selected post
-         query.findObjectsInBackground { (posts: [PFObject]?, error: Error?) in
-            if let error = error { 
-               print(error.localizedDescription)
-            } else if let posts = posts {
-               print("Successfully retrieved \(posts.count) posts.")
-           // TODO: Do something with posts...
-            }
-         }
-       ```
-     - (Read/GET) Query the comments for the post
-      ```swift
-         let query = PFQuery(className:"Comments")
-         query.whereKey("post", equalTo: ) #point to selected post
-         query.findObjectsInBackground { (comments: [PFObject]?, error: Error?) in
-            if let error = error { 
-               print(error.localizedDescription)
-            } else if let comment = comment {
-               print("Successfully retrieved \(comments.count) comment.")
-           // TODO: Do something with comments...
-            }
-         }
-       ```
-    - (Create/COMMENT) Create a new comment object
-        ```swift
-         let itemComment = PFObject(className:"Comments")
-         itemComment["author"] = currentUser
-         itemPost["text"] = commentField.text
-         itemPost.saveInBackground { (succeeded, error)  in
-         if (succeeded) {
-               // The post has been saved.
-            } else {
-               // There was a problem, check error.description
-         }
-         ```
-   - Maps Screen (optional)
-      - (Read/GET) Query all donation centers in community
-      ```swift
-         // (Still figuring this out)
-     ```    
+
+

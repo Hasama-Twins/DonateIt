@@ -1,5 +1,3 @@
-Original App Design Project
-===
 
 # DonateIt
 
@@ -8,6 +6,11 @@ Original App Design Project
 [![](http://img.youtube.com/vi/NbfG26QO_wQ/0.jpg)](http://www.youtube.com/watch?v=NbfG26QO_wQ "DonateIt Demo")
 
 Youtube Demo: https://youtu.be/NbfG26QO_wQ
+
+# Articles we are featured in
+https://blog.codepath.org/made-by-our-students-donateit/
+https://blog.codepath.org/2020-codepath-org-fall-semester-demo-day-ios-winners-announced/
+
 
 ## Table of Contents
 1. [Overview](#Overview)

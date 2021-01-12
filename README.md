@@ -52,6 +52,13 @@ Donate goods to people and donation centers in your neighborhood or pick up othe
 * Filter catagories and radius for items
 * Messaging to contact donaters
 
+### Final Video Walkthrough
+
+Here's a walkthrough of implemented user stories:
+
+<img src='http://g.recordit.co/M80KpQqgkq.gif' title='Final Video Walkthrough' width='' alt='Final Video Walkthrough' />
+
+
 ### Video Walkthrough for Milestone 1
 
 Here's a walkthrough of implemented user stories:

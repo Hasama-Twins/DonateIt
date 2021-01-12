@@ -24,7 +24,6 @@ https://blog.codepath.org/2020-codepath-org-fall-semester-demo-day-ios-winners-a
 Donate goods to people and donation centers in your neighborhood or pick up other people's excess goods in order to help minimize waste and be sustainable.
 
 ### App Evaluation
-[Evaluation of your app across the following attributes]
 - **Category:** Shopping (free items though)
 - **Mobile:** uses camera, uses Apple maps, uses Messages, mobile first experience.
 - **Story:** Allows users to donate unwanted goods to people and donation centers in your neighborhood or pick up other people's excess goods in order to help minimize waste and be sustainable.

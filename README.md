@@ -7,7 +7,7 @@
 
 Youtube Demo: https://youtu.be/NbfG26QO_wQ
 
-# Articles we are featured in
+# Featured Articles
 https://blog.codepath.org/made-by-our-students-donateit/
 
 https://blog.codepath.org/2020-codepath-org-fall-semester-demo-day-ios-winners-announced/

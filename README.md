@@ -12,6 +12,9 @@ https://blog.codepath.org/made-by-our-students-donateit/
 
 https://blog.codepath.org/2020-codepath-org-fall-semester-demo-day-ios-winners-announced/
 
+“This is such a thoughtful product in the time that we are in right now. During COVID-19 we’re accumulating so many things. From a technical perspective, what a beautiful design. The craft of the app really showed through, and the integration is super top notch. Loved the donation center integration and how it felt like it was part of the core app. Loved the integration with maps and loved the non-profit angle. Congratulations. Really great work.” 
+
+Alan McConnell – Head of Live Engineering at Instagram
 
 ## Table of Contents
 1. [Overview](#Overview)
